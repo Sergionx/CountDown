@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:CountDown.ViewModels" 
+             xmlns:model="clr-namespace:CountDown.Models"
+             x:Class="CountDown.Views.MomentsPage"
+             Title="{Binding Title}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddMoment_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <RefreshView x:DataType="local:MomentsViewModel" Command="{Binding LoadMomentCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" >
+        <ListView x:Name="MomentListView"
+                  BackgroundColor="Beige"
+                  ItemsSource="{Binding Moments}"
+                  ItemSelected="OnMomentSelected">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Moment">
+                    <ViewCell>
+                        <Grid Padding="25,0,0,0" RowDefinitions="Auto, Auto, Auto, *" ColumnDefinitions="Auto, *, Auto">
+                            <BoxView Grid.Row="2" Grid.Column="0"  VerticalOptions="Start" WidthRequest="4" Color="{Binding Color}" HeightRequest="70" Margin="25,-50,25,10"/>
+                            <Label Grid.Column="1" Grid.Row="0"
+                                   Text="{Binding Name}" TextColor="Black"/>
+                            <Label Grid.Column="2" Grid.Row="0" 
+                                Text="{Binding MessageTimeLeft}" TextColor="Black" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </RefreshView>
+
+</ContentPage>
