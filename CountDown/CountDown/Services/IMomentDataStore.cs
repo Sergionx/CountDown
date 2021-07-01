@@ -12,5 +12,6 @@ namespace CountDown.Services
         Task<bool> UpdateMomentAsync(Moment moment);
         Task<Moment> GetMomentAsync(string id);
         Task<IList<Moment>> GetMomentsAsync();
+        Task<IList<Moment>> DeleteMomentAsync(Moment moment);
     }
 }

@@ -30,14 +30,13 @@ namespace CountDown.Views
             {
                 return;
             }
-            //Poner MomentViewModel
-            //await Navigation.PushModalAsync()
+            await Navigation.PushModalAsync(new NavigationPage(new MomentDetailPage(new MomentDetailViewModel(moment))));
         }
         
         async void AddMoment_Clicked(object sender, EventArgs e)
         {
-            //Poner MomentDetail
-            await Navigation.PushModalAsync(new NavigationPage(new ItemDetailPage()));
+            
+            await Navigation.PushModalAsync(new NavigationPage(new MomentDetailPage()));
         }
     }
 }

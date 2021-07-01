@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:CountDown.Models" 
+             xmlns:viewmodels="clr-namespace:CountDown.ViewModels" 
+             x:DataType="viewmodels:MomentDetailViewModel"
+             x:Class="CountDown.Views.MomentDetailPage"
+             Title="{Binding Title}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked"/>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked"/>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked"/> 
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker ItemsSource="{Binding Importances}"
+                    x:Name="Importance"
+                SelectedItem="{Binding Moment.Importance}"
+                Title="Moment importance" 
+                FontSize="Medium">
+            </Picker>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

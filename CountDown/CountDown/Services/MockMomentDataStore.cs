@@ -13,11 +13,11 @@ namespace CountDown.Services
 
         private static List<Moment> MockMoments { get => mockMoments; set => mockMoments = value; }
 
-       static MockMomentDataStore()
+        static MockMomentDataStore()
         {
             mockMoments = new List<Moment>
             {
-                new Moment {Id = "0", Color="Red", 
+                new Moment {Id = "0", Color="Red",
                     FinishTime = DateTime.Now.AddDays(4), Importance= 1, Name= "Sacarse los mocos" },
 
                 new Moment {Id = "1", Color="Pink",
@@ -67,10 +67,21 @@ namespace CountDown.Services
             }
             return await Task.FromResult(momentFound);
         }
-        
+
         private static Moment CopyMoment(Moment moment)
         {
-            return new Moment {Color = moment.Color, FinishTime = moment.FinishTime, Id = moment.Id, Importance = moment.Importance, Name = moment.Name, TimeLeft = moment.TimeLeft };
+            return new Moment { Color = moment.Color, FinishTime = moment.FinishTime, Id = moment.Id, Importance = moment.Importance, Name = moment.Name, TimeLeft = moment.TimeLeft };
+        }
+
+        public async Task<IList<Moment>> DeleteMomentAsync(Moment moment)
+        {
+            var momentIndex = mockMoments.FindIndex((Moment m) => m.Id == moment.Id);
+            var momentFound = momentIndex != -1;
+            if (momentFound)
+            {
+                mockMoments.Remove(moment);
+            }
+            return await Task.FromResult(mockMoments);
         }
     }
 }
