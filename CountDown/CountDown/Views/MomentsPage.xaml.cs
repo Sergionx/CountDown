@@ -38,5 +38,13 @@ namespace CountDown.Views
             
             await Navigation.PushModalAsync(new NavigationPage(new MomentDetailPage()));
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Moments.Count == 0)
+                viewModel.LoadMomentCommand.Execute(null);
+        }
     }
 }

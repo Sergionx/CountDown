@@ -1,4 +1,5 @@
 ﻿using CountDown.Models;
+using CountDown.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ using Xamarin.Forms;
 
 namespace CountDown.ViewModels
 {
-    class MomentsViewModel : BaseViewModel
+    public class MomentsViewModel : BaseViewModel
     {
         public ObservableCollection<Moment> Moments { get; set; }
         public Command LoadMomentCommand { get; set; }
@@ -17,11 +18,32 @@ namespace CountDown.ViewModels
         public Command<Moment> MommentTapped { get; set; }
 
         public MomentsViewModel()
-        {
+        {   
             Title = "My moments";
             Moments = new ObservableCollection<Moment>();
             LoadMomentCommand = new Command(async () => await ExecuteLoadMomentComand());
 
+            MessagingCenter.Subscribe<MomentDetailPage, Moment>(this, "SaveMoment",
+                async (sender, moment) =>
+                {
+                    Moments.Add(moment);
+                    await momentDataStore.AddMomentAsync(moment);
+                    LoadMomentCommand.Execute(null);
+                });
+
+            MessagingCenter.Subscribe<MomentDetailPage, Moment>(this, "UpdateMoment",
+                async (sender, moment) =>
+                {
+                    await momentDataStore.UpdateMomentAsync(moment);
+                    LoadMomentCommand.Execute(null);
+                });
+
+            MessagingCenter.Subscribe<MomentDetailPage, Moment>(this, "DeleteMoment",
+                async (sender, moment) =>
+                {
+                    await momentDataStore.DeleteMomentAsync(moment);
+                    LoadMomentCommand.Execute(null);
+                });
         }
 
         async Task ExecuteLoadMomentComand()
@@ -32,12 +54,8 @@ namespace CountDown.ViewModels
             {
                 Moments.Clear();
                 var moments = await momentDataStore.GetMomentsAsync();
+                
                 foreach (var moment in moments)
-                {
-                    Moments.Add(moment);
-                }
-
-                foreach (var moment in Moments)
                 {
                     if (moment.TimeLeft.Days > 365)
                     {
@@ -59,6 +77,11 @@ namespace CountDown.ViewModels
                     {
                         moment.MessageTimeLeft = $"{Decimal.Round((decimal)moment.TimeLeft.TotalMinutes)} minutes left";
                     }
+                    else
+                    {
+                        moment.MessageTimeLeft = "What the heck just happened?";
+                    }
+                    Moments.Add(moment);
                 }
             }
             catch (Exception ex)
@@ -69,6 +92,7 @@ namespace CountDown.ViewModels
             {
                 IsBusy = false;
             }
+
         }
     }
 }
