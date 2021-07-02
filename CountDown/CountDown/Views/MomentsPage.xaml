@@ -11,7 +11,7 @@
     </ContentPage.ToolbarItems>
 
     <RefreshView x:DataType="local:MomentsViewModel" Command="{Binding LoadMomentCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" >
-        <ListView x:Name="MomentListView"
+        <ListView x:Name="MomentsView"
                   BackgroundColor="Beige"
                   ItemsSource="{Binding Moments}"
                   ItemSelected="OnMomentSelected">

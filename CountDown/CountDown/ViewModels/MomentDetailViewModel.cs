@@ -8,7 +8,7 @@ namespace CountDown.ViewModels
     public class MomentDetailViewModel : BaseViewModel
     {
         public Moment Moment { get; set; }
-        public IList<Moment> MomentList { get; set; }
+        public IList<Moment> Moments { get; set; }
         public IList<int> Importances => new List<int> { 1, 2, 3, 4, 5 };
 
 
@@ -21,13 +21,13 @@ namespace CountDown.ViewModels
 
             Title = IsNewMoment ? "Add moment" : "Edit moment";
 
-            InitalizeMomentList();
+            InitalizeMoments();
             Moment = moment ?? new Moment();
         }
 
-        async private void InitalizeMomentList()
+        async private void InitalizeMoments()
         {
-            MomentList = await momentDataStore.GetMomentsAsync();
+            Moments = await momentDataStore.GetMomentsAsync();
         }
     }
 }

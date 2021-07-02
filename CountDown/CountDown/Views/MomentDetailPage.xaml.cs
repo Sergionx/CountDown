@@ -30,10 +30,8 @@ namespace CountDown.Views
 
         public void Save_Clicked(object sender, EventArgs eventArgs)
         {
-            // Determine appropriate message
             var message = viewModel.IsNewMoment ? "SaveMoment" : "UpdateMoment";
 
-            // Send appropriate message, include the affected Moment
             MessagingCenter.Send(this, message, viewModel.Moment);
 
             Navigation.PopModalAsync();
@@ -43,7 +41,10 @@ namespace CountDown.Views
         {
             var momentIndex = viewModel.momentDataStore.DeleteMomentAsync(viewModel.Moment);
 
+            MessagingCenter.Send(this, "DeleteMoment", viewModel.Moment);
+
             Navigation.PopModalAsync();
+            
         }
     }
 }
