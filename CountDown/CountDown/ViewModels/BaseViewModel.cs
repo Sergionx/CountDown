@@ -10,7 +10,6 @@ namespace CountDown.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         public IMomentDataStore momentDataStore =>
             DependencyService.Get<IMomentDataStore>() ?? new MockMomentDataStore();

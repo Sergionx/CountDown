@@ -1,24 +1,58 @@
 ﻿using CountDown.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace CountDown.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        public Command LoginCommand { get; }
+        public Action DisplayInvalidLoginPrompt;
+        public INavigation Navigation { get; set; }
 
-        public LoginViewModel()
+        private string email;
+        public string Email
         {
-            LoginCommand = new Command(OnLoginClicked);
+            get { return email; }
+            set
+            {
+                email = value;
+                OnPropertyChanged();
+            }
         }
 
-        private async void OnLoginClicked(object obj)
+        private string password;
+        public string Password
         {
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            get { return password; }
+            set
+            {
+                password = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand SubmitCommand { protected set; get; }
+       
+        public LoginViewModel()
+        {
+            SubmitCommand = new Command(OnSubmit);
+        }
+
+        public void OnSubmit()
+        {
+            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@") || string.IsNullOrWhiteSpace(password))
+            {
+                DisplayInvalidLoginPrompt();
+            }
+            else
+            {
+                var about = new AboutPage();
+                Navigation.PushModalAsync(new NavigationPage(about));
+            }
         }
     }
 }

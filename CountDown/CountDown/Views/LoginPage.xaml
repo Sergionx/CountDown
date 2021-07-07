@@ -2,13 +2,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:local="clr-namespace:CountDown.ViewModels"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
              x:Class="CountDown.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled">
+    
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-        </StackLayout>
+        <Grid>
+            <Image Source="CountdownWallpaper.jpg" Aspect="AspectFill"/>
+            <BoxView Color="BlanchedAlmond" Opacity="0.8"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Row="0" Source="CountdownLogo.png" WidthRequest="100" HeightRequest="100" Margin="0, 50, 0, 0"/>
+
+                <StackLayout Grid.Row="1" Padding="30, 20" x:DataType="local:LoginViewModel">
+                    <Entry x:Name="Email" Text="{Binding Email}"  
+                        Placeholder="Email" PlaceholderColor="Black" Keyboard="Email"/>
+                    <Entry x:Name="Password" Text="{Binding Password}"
+                        Placeholder="Password" PlaceholderColor="Black" IsPassword="True"/>
+                    <Button Text="Log in"  Clicked="Login_Clicked" BackgroundColor="CadetBlue" CornerRadius="20" TextColor="BlanchedAlmond" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="I forgot my password" FontAttributes="Bold"/>
+                        <Label Text="Register" HorizontalOptions="EndAndExpand" FontAttributes="Bold"/>
+                    </StackLayout>
+                </StackLayout>
+                
+            </Grid>
+        </Grid>
+
+        
     </ContentPage.Content>
 </ContentPage>
