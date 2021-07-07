@@ -32,10 +32,10 @@ namespace CountDown.Views
             }
             await Navigation.PushModalAsync(new NavigationPage(new MomentDetailPage(new MomentDetailViewModel(moment))));
         }
-        
+
         async void AddMoment_Clicked(object sender, EventArgs e)
         {
-            
+
             await Navigation.PushModalAsync(new NavigationPage(new MomentDetailPage()));
         }
 

@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:CountDown.Models"
              x:Class="CountDown.Views.MomentsPage"
              Title="{Binding Title}">
-    
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddMoment_Clicked" />
     </ContentPage.ToolbarItems>
@@ -15,7 +15,7 @@
                   BackgroundColor="Beige"
                   ItemsSource="{Binding Moments}"
                   ItemSelected="OnMomentSelected">
-            
+
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Moment">
                     <ViewCell>

@@ -11,8 +11,8 @@ namespace CountDown
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
             Routing.RegisterRoute(nameof(MomentsPage), typeof(MomentsPage));
         }
 
