@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace CountDown.ViewModels
 {
@@ -10,6 +11,10 @@ namespace CountDown.ViewModels
         public Moment Moment { get; set; }
         public IList<Moment> Moments { get; set; }
         public IList<int> Importances => new List<int> { 1, 2, 3, 4, 5 };
+        public DatePicker DatePicker => new DatePicker
+        {
+            MinimumDate = DateTime.Today
+        };
 
 
         // True when adding a new Moment; false when editing existing Moment

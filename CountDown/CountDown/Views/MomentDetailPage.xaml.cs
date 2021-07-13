@@ -44,7 +44,30 @@ namespace CountDown.Views
             MessagingCenter.Send(this, "DeleteMoment", viewModel.Moment);
 
             Navigation.PopModalAsync();
-            
+        }
+
+        void OnDateSelected(object sender, DateChangedEventArgs args)
+        {
+            if (viewModel.Moment.TimeLeft.Days > 365)
+            {
+                viewModel.Moment.MessageTimeLeft = "more than a year left";
+            }
+            else if (viewModel.Moment.TimeLeft.Days > 30)
+            {
+                viewModel.Moment.MessageTimeLeft = "more than a month left";
+            }
+            else if (viewModel.Moment.TimeLeft.Days < 30 && viewModel.Moment.TimeLeft.Days >= 1)
+            {
+                viewModel.Moment.MessageTimeLeft = $"{Decimal.Round((decimal)viewModel.Moment.TimeLeft.TotalDays)} days left";
+            }
+            else if (viewModel.Moment.TimeLeft.Days < 1)
+            {
+                viewModel.Moment.MessageTimeLeft = "It's today!";
+            }
+            else
+            {
+                viewModel.Moment.MessageTimeLeft = "What the heck just happened?";
+            }
         }
     }
 }

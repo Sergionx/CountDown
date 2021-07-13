@@ -15,12 +15,21 @@
     
     <ContentPage.Content>
         <StackLayout>
+
+            <Entry Placeholder="Name" PlaceholderColor="Gray" Text="{Binding Moment.Name}" x:Name="Name"/>
+            
             <Picker ItemsSource="{Binding Importances}"
                     x:Name="Importance"
                 SelectedItem="{Binding Moment.Importance}"
                 Title="Moment importance" 
                 FontSize="Medium">
             </Picker>
+
+            <Label Text="Date:"/>
+            <DatePicker MinimumDate="{Binding DatePicker.MinimumDate}"
+                        DateSelected="OnDateSelected"
+                        Date="{Binding Moment.FinishTime.Date}"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
