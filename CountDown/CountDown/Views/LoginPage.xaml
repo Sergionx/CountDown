@@ -24,9 +24,9 @@
 
                 <StackLayout Grid.Row="1" Padding="30, 20" x:DataType="local:LoginViewModel">
                     <Entry x:Name="Email" Text="{Binding Email}"  
-                        Placeholder="Email" PlaceholderColor="Black" Keyboard="Email"/>
+                        Placeholder="Email" PlaceholderColor="Gray" Keyboard="Email"/>
                     <Entry x:Name="Password" Text="{Binding Password}"
-                        Placeholder="Password" PlaceholderColor="Black" IsPassword="True"/>
+                        Placeholder="Password" PlaceholderColor="Gray" IsPassword="True"/>
                     <Button Text="Log in"  Clicked="Login_Clicked" BackgroundColor="CadetBlue" CornerRadius="20" TextColor="BlanchedAlmond" />
                     <StackLayout Orientation="Horizontal">
                         <Label Text="I forgot my password" FontAttributes="Bold"/>

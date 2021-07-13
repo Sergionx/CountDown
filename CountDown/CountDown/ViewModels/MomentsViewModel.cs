@@ -65,17 +65,13 @@ namespace CountDown.ViewModels
                     {
                         moment.MessageTimeLeft = "more than a month left";
                     }
-                    else if (moment.TimeLeft.Days < 30 || moment.TimeLeft.Days > 1)
+                    else if (moment.TimeLeft.Days < 30 && moment.TimeLeft.Days >= 1)
                     {
                         moment.MessageTimeLeft = $"{Decimal.Round((decimal)moment.TimeLeft.TotalDays)} days left";
                     }
-                    else if (moment.TimeLeft.Hours > 1)
+                    else if (moment.TimeLeft.Days < 1)
                     {
-                        moment.MessageTimeLeft = $"{Decimal.Round((decimal)moment.TimeLeft.TotalHours)} hours left";
-                    }
-                    else if (moment.TimeLeft.Hours < 1)
-                    {
-                        moment.MessageTimeLeft = $"{Decimal.Round((decimal)moment.TimeLeft.TotalMinutes)} minutes left";
+                        moment.MessageTimeLeft = "It's today!";
                     }
                     else
                     {

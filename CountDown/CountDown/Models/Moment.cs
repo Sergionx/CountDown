@@ -72,7 +72,7 @@ namespace CountDown.Models
 
         public TimeSpan TimeLeft
         {
-            get { return finishTime - DateTime.Now; }
+            get { return finishTime - DateTime.Now.Date; }
             set { OnPropertyChanged(); }
         }
 
