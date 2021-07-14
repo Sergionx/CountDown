@@ -91,7 +91,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\CountdownWallpaper.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Sergio.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
   </ItemGroup>
