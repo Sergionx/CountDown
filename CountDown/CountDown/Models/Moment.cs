@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Xamarin.Forms;
 
 namespace CountDown.Models
 {
@@ -34,9 +35,9 @@ namespace CountDown.Models
             }
         }
 
-        private string color;
+        private Color color;
 
-        public string Color
+        public Color Color
         {
             get { return color; }
             set

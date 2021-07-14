@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace CountDown.Services
 {
@@ -17,13 +18,13 @@ namespace CountDown.Services
         {
             mockMoments = new List<Moment>
             {
-                new Moment {Id = "0", Color="Red",
+                new Moment {Id = "0", Color=Color.Red,
                     FinishTime = DateTime.Now.AddDays(4), Importance= 1, Name= "Sacarse los mocos" },
 
-                new Moment {Id = "1", Color="Pink",
+                new Moment {Id = "1", Color=Color.Pink,
                     FinishTime = DateTime.Now.AddDays(40), Importance= 5, Name= "PAPAPAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" },
 
-                new Moment {Id = "2", Color="Yellow",
+                new Moment {Id = "2", Color=Color.Yellow,
                     FinishTime = DateTime.Now.AddDays(400), Importance= 3, Name= "Pñdwdw@#$$%^&*()_+dkadjakdjakdjakdjakdjakdjakjdjdkM" }
 
             };

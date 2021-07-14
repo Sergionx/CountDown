@@ -69,5 +69,7 @@ namespace CountDown.Views
                 viewModel.Moment.MessageTimeLeft = "What the heck just happened?";
             }
         }
+
+        private void ColorPicker_PickedColorChanged(object sender, Color colorPicked) => viewModel.Moment.Color = colorPicked;
     }
 }
