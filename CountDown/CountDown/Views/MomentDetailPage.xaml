@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:CountDown.Models" 
-             xmlns:viewmodels="clr-namespace:CountDown.ViewModels" 
+             xmlns:viewmodels="clr-namespace:CountDown.ViewModels" xmlns:controls="clr-namespace:CountDown.Controls"
              x:DataType="viewmodels:MomentDetailViewModel"
              x:Class="CountDown.Views.MomentDetailPage"
              Title="{Binding Title}">
@@ -30,6 +30,16 @@
                         DateSelected="OnDateSelected"
                         Date="{Binding Moment.FinishTime.Date}"/>
 
+            <Frame
+            x:Name="ColorPickerFrame"
+            CornerRadius="8"
+            HeightRequest="200"
+            HorizontalOptions="Center"
+            WidthRequest="350">
+                <controls:ColorPickerControl
+                 x:Name="ColorPicker"
+                PickedColorChanged="ColorPicker_PickedColorChanged" />
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
