@@ -27,8 +27,8 @@
 
             <Label Text="Date:"/>
             <DatePicker MinimumDate="{Binding DatePicker.MinimumDate}"
-                        DateSelected="OnDateSelected"
-                        Date="{Binding Moment.FinishTime.Date}"/>
+                        Date="{Binding Moment.FinishTime}"
+                        DateSelected="OnDateSelected"/>
 
             <Frame
             x:Name="ColorPickerFrame"

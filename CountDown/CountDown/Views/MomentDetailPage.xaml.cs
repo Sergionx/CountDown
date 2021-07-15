@@ -60,9 +60,13 @@ namespace CountDown.Views
             {
                 viewModel.Moment.MessageTimeLeft = $"{Decimal.Round((decimal)viewModel.Moment.TimeLeft.TotalDays)} days left";
             }
-            else if (viewModel.Moment.TimeLeft.Days < 1)
+            else if (viewModel.Moment.TimeLeft.Days == 0)
             {
                 viewModel.Moment.MessageTimeLeft = "It's today!";
+            }
+            else if (viewModel.Moment.TimeLeft.Days < 0)
+            {
+                viewModel.Moment.MessageTimeLeft = "This actity has already passed";
             }
             else
             {
@@ -70,6 +74,9 @@ namespace CountDown.Views
             }
         }
 
-        private void ColorPicker_PickedColorChanged(object sender, Color colorPicked) => viewModel.Moment.Color = colorPicked;
+        private void ColorPicker_PickedColorChanged(object sender, Color colorPicked)
+        {
+            viewModel.Moment.Color = colorPicked;
+        }
     }
 }

@@ -7,6 +7,9 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
+using System.IO;
+using System.Linq;
 
 namespace CountDown.ViewModels
 {
@@ -17,10 +20,15 @@ namespace CountDown.ViewModels
         public Command AddMomentCommand { get; set; }
         public Command<Moment> MommentTapped { get; set; }
 
+        const string localFileName = "Moments.txt";
+        string localpath;
+
         public MomentsViewModel()
         {   
             Title = "My moments";
             Moments = new ObservableCollection<Moment>();
+            localpath = Path.Combine(FileSystem.AppDataDirectory, localFileName);
+
             LoadMomentCommand = new Command(async () => await ExecuteLoadMomentComand());
 
             MessagingCenter.Subscribe<MomentDetailPage, Moment>(this, "SaveMoment",
@@ -28,6 +36,15 @@ namespace CountDown.ViewModels
                 {
                     Moments.Add(moment);
                     await momentDataStore.AddMomentAsync(moment);
+
+                    //using (var stream = await FileSystem.OpenAppPackageFileAsync(localFileName))
+                    //{
+                    //    using (var writer = new StreamWriter(stream))
+                    //    {
+                    //        await writer.WriteLineAsync($"{moment.Id}, {moment.Name}, {moment.Color}, {moment.FinishTime}, {moment.Importance}, {moment.MessageTimeLeft}, {moment.TimeLeft}");
+                    //    }
+                    //}
+                    
                     LoadMomentCommand.Execute(null);
                 });
 
@@ -53,6 +70,11 @@ namespace CountDown.ViewModels
             try
             {
                 Moments.Clear();
+                //using (Stream stream = await FileSystem.OpenAppPackageFileAsync(localFileName))
+                //{
+
+                //}
+                //var appdirectory = FileSystem.AppDataDirectory;
                 var moments = await momentDataStore.GetMomentsAsync();
                 
                 foreach (var moment in moments)
@@ -90,6 +112,5 @@ namespace CountDown.ViewModels
             }
 
         }
-
     }
 }
