@@ -160,4 +160,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\CountdownWallpaper.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Sergio.jpg" />
+  </ItemGroup>
 </Project>

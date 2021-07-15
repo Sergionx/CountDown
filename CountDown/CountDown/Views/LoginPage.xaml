@@ -23,14 +23,14 @@
                 <Image Grid.Row="0" Source="CountdownLogo.png" WidthRequest="100" HeightRequest="100" Margin="0, 50, 0, 0"/>
 
                 <StackLayout Grid.Row="1" Padding="30, 20" x:DataType="local:LoginViewModel">
-                    <Entry x:Name="Email" Text="{Binding Email}"  
+                    <Entry x:Name="Email" Text="{Binding Email}" TextColor="Black"
                         Placeholder="Email" PlaceholderColor="Gray" Keyboard="Email"/>
-                    <Entry x:Name="Password" Text="{Binding Password}"
+                    <Entry x:Name="Password" Text="{Binding Password}" TextColor="Black" 
                         Placeholder="Password" PlaceholderColor="Gray" IsPassword="True"/>
                     <Button Text="Log in"  Clicked="Login_Clicked" BackgroundColor="CadetBlue" CornerRadius="20" TextColor="BlanchedAlmond" />
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="I forgot my password" FontAttributes="Bold"/>
-                        <Label Text="Register" HorizontalOptions="EndAndExpand" FontAttributes="Bold"/>
+                        <Label Text="I forgot my password" FontAttributes="Bold" TextColor="Black"/>
+                        <Label Text="Register" HorizontalOptions="EndAndExpand" FontAttributes="Bold" TextColor="Black"/>
                     </StackLayout>
                 </StackLayout>
                 

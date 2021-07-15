@@ -9,8 +9,8 @@ namespace CountDown.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+            Title = "About me";
+            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://github.com/Sergionx"));
         }
 
         public ICommand OpenWebCommand { get; }
